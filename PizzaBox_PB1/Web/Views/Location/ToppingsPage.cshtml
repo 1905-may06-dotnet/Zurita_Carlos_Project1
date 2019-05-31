@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Web.Models.Topping>
+
+@{
+    ViewData["Title"] = "ToppingsPage";
+    int numt = 1;
+    ViewBag.Title = "Index";
+    var PTID = ViewBag.PTID;
+    var PTIDOrder = ViewBag.PTIDOrder;
+}
+
+<h1>Toppings</h1>
+
+<p>
+    <a asp-action="CreateTopping" asp-route-pid=@PTID>Add Toppings</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numt)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Toppingid)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Tpizzaid)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Topping1)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Tpizzaid == PTID)
+            {
+                <tr>
+                    <td>
+                        @numt
+                        @{numt++;}
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Toppingid)
+                    </td>*@
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Tpizzaid)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Topping1)
+                    </td>
+                    <td>
+                        @*<a asp-action="PizzasPage">Pizzas</a> |*@
+                        @*<a asp-action="Index">Locations</a>*@
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a asp-action="PizzasPage" asp-route-opid=@PTIDOrder>Back To Pizzas</a><br><br><br>
+<a asp-action="Index">Back To Locations</a>

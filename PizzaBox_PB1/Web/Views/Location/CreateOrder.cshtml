@@ -1,0 +1,44 @@
+﻿@model Web.Models.Order
+
+@{
+    ViewData["Title"] = "CreateOrder";
+    ViewBag.Title = "Index";
+    var UID = ViewBag.UID;
+}
+
+<h1>Make An Order</h1>
+@*<h2>@UID</h2>*@
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ocustomerid" class="control-label"></label>
+                <input asp-for="Ocustomerid" class="form-control" value=@UID/>
+                <span asp-validation-for="Ocustomerid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datetime" class="control-label"></label>
+                <input asp-for="Datetime" class="form-control" autofocus/>
+                <span asp-validation-for="Datetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @*<a asp-action="Index">Back to List</a><br>*@
+    @*<a asp-action="ToppingsPage">Back to Topping List</a><br>*@
+    @*<a asp-action="PizzasPage">Back to Pizza List</a><br>*@
+    <a asp-action="OrdersPage" asp-route-uoid=@UID>Back to Order List</a><br>
+    @*<a asp-action="UsersPage">Back to User List</a>*@
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
