@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Web.Models.Pizza>
+
+@{
+    ViewData["Title"] = "PizzasPreview";
+    int nump = 1;
+    ViewBag.Title = "Index";
+    //var OPID = ViewBag.OPID;
+    var ppid = ViewBag.ppid;
+}
+
+<h1>PizzasPreview</h1>
+<h2>@ppid</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nump)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizzaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Porderid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToppingN1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToppingN2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToppingN3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToppingN4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToppingN5)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nump)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pizzaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Crust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Porderid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingN1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingN2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingN3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingN4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingN5)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

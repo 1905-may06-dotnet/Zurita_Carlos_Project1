@@ -7,6 +7,8 @@
     var OPID = ViewBag.OPID;
     var PTID = ViewBag.PTIDUser;
     var PTIDName = ViewBag.PTIDName;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    int totalordercost1 = 0;
 }
 
 <h1>@PTIDName Pizzas</h1>
@@ -61,6 +63,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Cost)
+                    @{
+                        totalordercost1 = +item.Cost; 
+                        }
                 </td>
                 @*<td>
                     @ViewData["Customer"]
@@ -82,4 +87,5 @@
         }
     </tbody>
 </table>
+<h4>Total Order Cost: @totalordercost1</h4>
 <a asp-action="OrdersPage" asp-route-uoid=@PTID>Back To Orders List</a>

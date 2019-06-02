@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -24,10 +25,18 @@ namespace Web.Models
         public int Userid { get; set; }
         [DisplayName("Username")]
         [Required(ErrorMessage = "Username cannot be blank")]
+        [Remote("IsAlreadyRegistered", "Location", HttpMethod = "POST", ErrorMessage = "Username already exists in database.")]
         public string Username { get; set; }
+        [DisplayName("Username")]
+        [Required(ErrorMessage = "Username cannot be blank")]
+        public string Usernamein { get; set; }
         [DisplayName("Password")]
         [Required(ErrorMessage = "Password cannot be blank")]
         public string Password { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
         [DisplayName("First Name")]
         [Required(ErrorMessage = "Firstname cannot be blank")]
         public string Firstname { get; set; }

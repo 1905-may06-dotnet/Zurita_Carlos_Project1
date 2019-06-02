@@ -1,8 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    //int numo = 1;
+    ViewBag.Title = "Index";
+    var SIGNEDINUSERIDH = ViewBag.SIGNEDINUSERIDH;
+    //if (SIGNEDINUSERIDH == 0)
+    //{
+    //   Layout = "~/Views/Shared/_Layout.cshtml";
+    //}
+    //else
+    //{
+    //    Layout = "~/Views/Shared/_Layout1.cshtml";  
+    //}
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome to PizzaBox</h1>
+        <h3>The best pizzas around in a box</h3>
+        @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+        @*@Html.ActionLink("Locations", "Index", "Location", new { @id = "" }, null)*@
+        <img src="~/images/PizzaBoxLogoBlack.png" alt="ASP.NET" class="img-responsive" />
+    </div>

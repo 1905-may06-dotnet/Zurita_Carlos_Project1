@@ -27,5 +27,7 @@ namespace Web.Models
         public int Ocustomerid { get; set; }
         [DisplayName("Date Time")]
         public DateTime? Datetime { get; set; }
+        [DisplayName("TotalCost")]
+        public int totalordercostp { get; set; }
     }
 }

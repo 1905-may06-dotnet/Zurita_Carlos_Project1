@@ -34,5 +34,17 @@ namespace Web.Models
         [DisplayName("Order")]
         [Required(ErrorMessage = "Porderid cannot be blank")]
         public int Porderid { get; set; }
+        [DisplayName("Topping 1")]
+        [Required(ErrorMessage = "This topping selection cannot be blank")]
+        public string ToppingN1 { get; set; }
+        [DisplayName("Topping 2")]
+        [Required(ErrorMessage = "This topping selection cannot be blank")]
+        public string ToppingN2 { get; set; }
+        [DisplayName("Topping 3")]
+        public string ToppingN3 { get; set; }
+        [DisplayName("Topping 4")]
+        public string ToppingN4 { get; set; }
+        [DisplayName("Topping 5")]
+        public string ToppingN5 { get; set; }
     }
 }

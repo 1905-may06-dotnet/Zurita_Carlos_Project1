@@ -6,11 +6,14 @@
     var SIGNINID = ViewBag.SIGNINID;
     var SIGNINIDName= ViewBag.SIGNINIDName;
     var SIGNINIDPass= ViewBag.SIGNINIDPass;
+    var SIGNINIDFName = ViewBag.SIGNINIDFName;
+    var SIGNINIDLName = ViewBag.SIGNINIDLName;
+    var SIGNINIDLoc = ViewBag.SIGNINIDLoc;
 }
 
 <h1>@SIGNINIDName Sign In</h1>
 
-<h4>User</h4>
+@*<h4>User</h4>*@
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -26,33 +29,33 @@
                 <input asp-for="Userid" class="form-control" />
                 <span asp-validation-for="Userid" class="text-danger"></span>
             </div>*@
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" autofocus/>
+                <input asp-for="Username" class="form-control" value=@SIGNINIDName />
                 <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" autocomplete="off"/>
+                <input asp-for="Password" class="form-control" type="password" autocomplete="off" autofocus/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Firstname" class="control-label"></label>
-                <input asp-for="Firstname" class="form-control" />
+                <input asp-for="Firstname" class="form-control" value=@SIGNINIDFName/>
                 <span asp-validation-for="Firstname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Lastname" class="control-label"></label>
-                <input asp-for="Lastname" class="form-control" />
+                <input asp-for="Lastname" class="form-control" value=@SIGNINIDLName/>
                 <span asp-validation-for="Lastname" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Ulocationid" class="control-label"></label>
-                <input asp-for="Ulocationid" class="form-control" />
+                <input asp-for="Ulocationid" class="form-control" value=@SIGNINIDLoc/>
                 <span asp-validation-for="Ulocationid" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Sign In" class="btn btn-primary" />
             </div>
         </form>
     </div>

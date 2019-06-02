@@ -7,6 +7,7 @@
     var UOID = ViewBag.UOID;
     var UOIDName = ViewBag.UOIDName;
     var UOIDLoc = ViewBag.UOIDLoc;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
 <h1>@UOIDName Orders</h1>
@@ -21,18 +22,20 @@
                 @Html.DisplayNameFor(model => model.Numo)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Orderid)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Orderid)
+                </th>*@
             @*<th>
-                Username
-            </th>*@
+                    Username
+                </th>*@
             @*<th>
-                @Html.DisplayNameFor(model => model.Ocustomerid)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Ocustomerid)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Datetime)
             </th>
-            <th></th>
+            <th>
+                Cost
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -40,32 +43,37 @@
         {
             if (item.Ocustomerid == UOID)
             {
-            <tr>
-                <td>
-                    @numo
-                    @{numo++;}
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Orderid)
-                </td>*@
-                @*<td>
-                    @ViewData["Username"]
-                </td>*@
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Ocustomerid)
-                </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Datetime)
-                </td>
-                <td>
-                    @*<a asp-action="UsersPage">Users</a> |*@
-                    <a asp-action="PizzasPage" asp-route-opid=@item.Orderid>Pizzas</a> |
-                    <a asp-action="CreatePizza" asp-route-id=@item.Orderid>Make A Pizza</a>
-                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @numo
+                        @{numo++;}
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Orderid)
+                        </td>*@
+                    @*<td>
+                            @ViewData["Username"]
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Ocustomerid)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datetime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalordercostp)
+                    </td>
+                    <td>
+                        @*<a asp-action="UsersPage">Users</a> |*@
+                        <a asp-action="PizzasPage" asp-route-opid=@item.Orderid>Pizzas</a> |
+                        <a asp-action="CreatePizza" asp-route-id=@item.Orderid>Make A Pizza</a> |
+                        <a asp-action="CreatedefonePizza" asp-route-id=@item.Orderid>Make Def 1 Pizza</a> |
+                        <a asp-action="CreatedeftwoPizza" asp-route-id=@item.Orderid>Make Def 2 Pizza</a>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
             }
         }
     </tbody>

@@ -1,0 +1,73 @@
+﻿@model Web.Models.User
+
+@{
+    ViewData["Title"] = "CreateAnySignIn";
+}
+
+<h1>Sign In</h1>
+
+@*<h4>User</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAnySignIn" formnovalidate="formnovalidate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="Numu" class="control-label"></label>
+            <input asp-for="Numu" class="form-control" />
+            <span asp-validation-for="Numu" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Userid" class="control-label"></label>
+            <input asp-for="Userid" class="form-control" />
+            <span asp-validation-for="Userid" class="text-danger"></span>
+        </div>*@
+            @*<div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" formnovalidate="formnovalidate" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Usernamein" class="control-label"></label>
+                <input asp-for="Usernamein" class="form-control" formnovalidate="formnovalidate" autofocus/>
+                <span asp-validation-for="Usernamein" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="ConfirmPassword" class="control-label"></label>
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Firstname" class="control-label"></label>
+            <input asp-for="Firstname" class="form-control" />
+            <span asp-validation-for="Firstname" class="text-danger"></span>
+        </div>*@
+            @*<div class="form-group">
+            <label asp-for="Lastname" class="control-label"></label>
+            <input asp-for="Lastname" class="form-control" />
+            <span asp-validation-for="Lastname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ulocationid" class="control-label"></label>
+            <input asp-for="Ulocationid" class="form-control" />
+            <span asp-validation-for="Ulocationid" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
