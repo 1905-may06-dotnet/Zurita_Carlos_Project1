@@ -1,0 +1,137 @@
+﻿@model Web.Models.Pizza
+
+@{
+    ViewData["Title"] = "CreatePizzaPreview";
+    int nump = 1;
+    ViewBag.Title = "Index";
+    var PID2 = ViewBag.PID2;
+    var SIZE2 = ViewBag.SIZE2;
+    var CRUST2 = ViewBag.CRUST2;
+    var COST2 = ViewBag.COST2;
+    var POID2 = ViewBag.POID2;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    int totalordercost1 = 0;
+}
+
+<h1>CreatePizzaPreview</h1>
+
+<h4>Pizza</h4>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @nump
+            </th>
+                ID
+            <th>
+                Size
+            </th>
+            <th>
+                Crust
+            </th>
+            <th>
+                Cost
+            </th>
+            <th>
+                Order
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @nump
+                @{nump++;}
+            </td>
+            <td>
+                @PID2
+            </td>
+            <td>
+                @SIZE2
+            </td>
+            <td>
+                @CRUST2
+            </td>
+            <td>
+                @COST2
+            </td>
+            <td>
+                @POID2
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreatePizzaPreview">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Nump" class="control-label"></label>
+                <input asp-for="Nump" class="form-control" />
+                <span asp-validation-for="Nump" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizzaid" class="control-label"></label>
+                <input asp-for="Pizzaid" class="form-control" />
+                <span asp-validation-for="Pizzaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Crust" class="control-label"></label>
+                <input asp-for="Crust" class="form-control" />
+                <span asp-validation-for="Crust" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label"></label>
+                <input asp-for="Cost" class="form-control" />
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Porderid" class="control-label"></label>
+                <input asp-for="Porderid" class="form-control" />
+                <span asp-validation-for="Porderid" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="ToppingN1" class="control-label"></label>
+                <input asp-for="ToppingN1" class="form-control" />
+                <span asp-validation-for="ToppingN1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToppingN2" class="control-label"></label>
+                <input asp-for="ToppingN2" class="form-control" />
+                <span asp-validation-for="ToppingN2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToppingN3" class="control-label"></label>
+                <input asp-for="ToppingN3" class="form-control" />
+                <span asp-validation-for="ToppingN3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToppingN4" class="control-label"></label>
+                <input asp-for="ToppingN4" class="form-control" />
+                <span asp-validation-for="ToppingN4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToppingN5" class="control-label"></label>
+                <input asp-for="ToppingN5" class="form-control" />
+                <span asp-validation-for="ToppingN5" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

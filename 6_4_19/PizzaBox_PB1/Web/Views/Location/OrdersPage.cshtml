@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Web.Models.Order>
+
+@{
+    ViewData["Title"] = "OrdersPage";
+    int numo = 1;
+    ViewBag.Title = "Index";
+    var UOID = ViewBag.UOID;
+    var UOIDName = ViewBag.UOIDName;
+    var UOIDLoc = ViewBag.UOIDLoc;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h1>@UOIDName Orders</h1>
+<p>
+    <a asp-action="CreateOrder" asp-route-uid=@UOID>Order Pizzas</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numo)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Orderid)
+                </th>*@
+            @*<th>
+                    Username
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Ocustomerid)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Datetime)
+            </th>
+            <th>
+                Cost
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Ocustomerid == UOID)
+            {
+                <tr>
+                    <td>
+                        @numo
+                        @{numo++;}
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Orderid)
+                        </td>*@
+                    @*<td>
+                            @ViewData["Username"]
+                        </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Ocustomerid)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datetime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalordercostp)
+                    </td>
+                    <td>
+                        @*<a asp-action="UsersPage">Users</a> |*@
+                        <a asp-action="PizzasPage" asp-route-opid=@item.Orderid>Pizzas</a> |
+                        <a asp-action="CreatePizza" asp-route-id=@item.Orderid>Make A Pizza</a> |
+                        <a asp-action="CreatedefonePizza" asp-route-id=@item.Orderid>Make Def 1 Pizza</a> |
+                        <a asp-action="CreatedeftwoPizza" asp-route-id=@item.Orderid>Make Def 2 Pizza</a> |
+                        <a asp-action="CreatePizzaPrev" asp-route-upreid=@UOID>Make A Pizza With Preview</a>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+@*<a asp-action="UsersPage" asp-route-lid=@UOIDLoc>Users</a>*@
+<a asp-action="UserSignedIn" asp-route-lsid=@UOID>Back To User Information</a>

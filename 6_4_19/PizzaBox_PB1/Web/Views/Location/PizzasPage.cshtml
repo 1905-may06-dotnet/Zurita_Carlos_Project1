@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Web.Models.Pizza>
+
+@{
+    ViewData["Title"] = "PizzasPage";
+    int nump = 1;
+    ViewBag.Title = "Index";
+    var OPID = ViewBag.OPID;
+    var PTID = ViewBag.PTIDUser;
+    var PTIDName = ViewBag.PTIDName;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    int totalordercost1 = 0;
+}
+
+<h1>@PTIDName Pizzas</h1>
+<p>
+    @*<a asp-action="CreatePizza" asp-route-id=1>Make A Pizza</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nump)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Pizzaid)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Crust)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            @*<th>
+                Username
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Porderid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Porderid == OPID)
+            {
+            <tr>
+                <td>
+                    @nump
+                    @{nump++;}
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Pizzaid)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Crust)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                    @{
+                        totalordercost1 = +item.Cost; 
+                        }
+                </td>
+                @*<td>
+                    @ViewData["Customer"]
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Porderid)
+                </td>
+                <td>
+                    @*<a asp-action="OrdersPage">Orders</a> |*@
+                    @*<a asp-action="CreatePizza" asp-route-id=@item.Porderid>Make A Pizza</a> |*@
+                    <a asp-action="ToppingsPage" asp-route-ptid=@item.Pizzaid>Toppings</a> |
+                    <a asp-action="CreateTopping" asp-route-pid=@item.Pizzaid>Add Toppings</a>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+<h4>Total Order Cost: @totalordercost1</h4>
+<a asp-action="OrdersPage" asp-route-uoid=@PTID>Back To Orders List</a>

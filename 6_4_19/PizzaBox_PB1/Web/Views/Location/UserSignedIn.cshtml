@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Web.Models.User>
+
+@{
+    ViewData["Title"] = "UserSignedIn";
+    int numu = 1;
+    ViewBag.Title = "Index";
+    var LSID = ViewBag.LSID;
+    var LSIDName = ViewBag.LSIDName;
+    var LSIDLoc = ViewBag.LSIDLoc;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@*@if (LSIDName != "carlosz")
+{*@
+
+    <h1>@LSIDName User Information</h1>
+    <h4>Signed In</h4>
+    @*<h2>@LID</h2>*@
+    @*<p>
+            <a asp-action="Create">Create New</a>
+        </p>*@
+    <table class="table">
+        <thead>
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Numu)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.Userid)
+                    </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Firstname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lastname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ulocationid)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Userid == LSID)
+                {
+                    <tr>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Numu)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Userid)
+                            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Firstname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lastname)
+                        </td>
+                        <td>
+                            @LSIDLoc
+                        </td>
+                        <td>
+                            <a asp-action="LocationsPage" asp-route-lpid=@item.Userid>Locations</a> |
+                            <a asp-action="OrdersPage" asp-route-uoid=@item.Userid>Orders</a> |
+                            <a asp-action="CreateOrder" asp-route-uid=@LSID>Order Pizzas</a>
+                            @*<a asp-action="CreateOrder" asp-route-uid=@item.Userid>Order Pizzas</a>*@
+                            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+@*}
+else
+{
+<h1>Admin Information</h1>
+}*@
+@*<a asp-action="Index">Sign Out</a>*@
+<a asp-controller="Home" asp-action="Index">Sign Out</a>

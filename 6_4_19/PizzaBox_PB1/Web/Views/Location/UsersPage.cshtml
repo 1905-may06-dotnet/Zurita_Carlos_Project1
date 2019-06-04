@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Web.Models.User>
+
+@{
+    ViewData["Title"] = "UsersPage";
+    int numu = 1;
+    ViewBag.Title = "Index";
+    var LID = ViewBag.LID;
+    var LIDName = ViewBag.LIDName;
+}
+
+<h1>@LIDName Users</h1>
+@*<h2>@LID</h2>*@
+<p>
+    <a asp-action="Create" asp-route-luid=@LID>Register</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Numu)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Userid)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            @*<th>
+                Location
+            </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Ulocationid)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Ulocationid == LID)
+            {
+                <tr>
+                    <td>
+                        @numu
+                        @{numu++;}
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Userid)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Firstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lastname)
+                    </td>
+                    @*<td>
+                        @ViewData["Location"]
+                    </td>*@
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Ulocationid)
+                        </td>*@
+                    <td>
+                        @*<a asp-action="Index">Locations</a> |*@
+                        @*<a asp-action="OrdersPage" asp-route-uoid=@item.Userid>Orders</a> |*@
+                        @*<a asp-action="CreateOrder" asp-route-uid=@item.Userid>Order Pizzas</a> |*@
+                        <a asp-action="CreateSignIn" asp-route-signinid=@item.Userid>Sign In</a>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index">Locations</a>
