@@ -31,5 +31,5 @@ steps:
     azureSubscription: 'Free Trial(fa80f3f3-5619-457b-933b-a6bf7fc64b38)'
     appType: 'webApp'
     appName: 'ZuritaPizzas'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(System.DefaultWorkingDirectory)/$(pathSolution)/**/*.zip'
     deploymentMethod: 'auto'
