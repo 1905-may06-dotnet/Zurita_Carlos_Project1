@@ -33,3 +33,11 @@ steps:
     appType: 'webApp'
     WebAppName: 'ZuritaPizzas'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Free Trial(fa80f3f3-5619-457b-933b-a6bf7fc64b38)'
+    appType: 'webApp'
+    appName: 'ZuritaPizzas'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
