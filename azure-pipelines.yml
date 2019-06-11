@@ -26,15 +26,6 @@ steps:
   inputs:
     command: 'publish'
     projects: '$(projectPath)/*.csproj'
-    
-- task: AzureRmWebAppDeployment@4
-  inputs: 
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Free Trial(fa80f3f3-5619-457b-933b-a6bf7fc64b38)'
-    appType: 'webApp'
-    WebAppName: 'ZuritaPizzas'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'Free Trial(fa80f3f3-5619-457b-933b-a6bf7fc64b38)'
