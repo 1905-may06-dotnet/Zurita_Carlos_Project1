@@ -585,103 +585,6 @@ namespace Web.Controllers
                 return View();
             }
         }
-        public ActionResult RedirectPage()
-        {
-
-            return RedirectToAction(nameof(CreateFullPizza), new { PreviewList = PreviewList });
-        }
-        [HttpGet]
-        //public ActionResult CreateFullPizza(List<Models.Pizza> PreviewList)
-        public ActionResult CreateFullPizza()
-        {
-            int nextordernumfull = 1;
-            var allfullorders = db.GetOrders();
-            foreach (var allfullorder in allfullorders)
-            {
-                nextordernumfull += 1;
-            }
-            TempData["nextordernum"] = nextordernumfull;
-            int nextpizzanumfull = 1;
-            var allfullpizzas = db.GetPizzas();
-            foreach (var allfullpizza in allfullpizzas)
-            {
-                nextpizzanumfull += 1;
-            }
-            TempData["nextpizzanum"] = nextpizzanumfull;
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateFullPizza(IFormCollection collection, Models.Pizza pizza)
-        {
-            //PizzaBox.Domain.Pizza dmpp = new Pizza();
-            //var pizzas = db.GetPizzas();
-            pi = new Models.Pizza();
-            //pi.Pizzaid = pizza.Pizzaid;
-            pi.Pizzaid = (int)TempData["nextordernum"];
-            pi.Size = pizza.Size;
-            pi.Crust = pizza.Crust;
-            pi.Cost = pizza.Cost;
-            //p.Porderid = 
-
-            //p.Nump++;
-                
-            int SizeCost = PizzaBox.Domain.BusinessLogic.SizeCost(pizza.Size);
-            int CrustCost = PizzaBox.Domain.BusinessLogic.CrustCost(pizza.Crust);
-            //dmp.Cost = pizza.Cost;
-            //dmpp.Cost = PizzaBox.Domain.BusinessLogic.totalordercost(SizeCost, CrustCost);
-            pi.Porderid = (int)TempData["nextordernum"];
-            pi.ToppingN1 = pizza.ToppingN1;
-            pi.ToppingN2 = pizza.ToppingN2;
-            pi.ToppingN3 = pizza.ToppingN3;
-            pi.ToppingN4 = pizza.ToppingN4;
-            pi.ToppingN5 = pizza.ToppingN5;
-            pi.Cost = PizzaBox.Domain.BusinessLogic.totalordercost(SizeCost, CrustCost);
-            if (pi.ToppingN1 != "")
-            {
-                pi.Cost += 2;
-            }
-            if (pi.ToppingN2 != "")
-            {
-                pi.Cost += 2;
-            }
-            if (pi.ToppingN3 != "")
-            {
-                pi.Cost += 2;
-            }
-            if (pi.ToppingN4 != "")
-            {
-                pi.Cost += 2;
-            }
-            if (pi.ToppingN5 != "")
-            {
-                pi.Cost += 2;
-            }
-            PreviewList.Add(p);
-            try
-            {
-                //db.AddOrder(dmo);
-                //db.Save();
-                //return RedirectToAction(nameof(PizzasPreview), new { dmpp = dmpp, topping1 = Toppingp1, topping2 = Toppingp2, topping3 = Toppingp3, topping4 = Toppingp4, topping5 = Toppingp5 });
-                //return View();
-                //return RedirectToAction(nameof(CreateFullPizza), new { PreviewList = PreviewList });
-                return RedirectToAction(nameof(PizzasPreview), new { PreviewList = PreviewList });
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        //public ActionResult PizzasPreview(PizzaBox.Domain.Pizza dmpp, string topping1, string topping2, string topping3, string topping4, string topping5)
-        public ActionResult PizzasPreview(List<Models.Pizza> PreviewList)
-        {
-            foreach (var previewitem in PreviewList)
-            {
-                ViewBag.ppid = previewitem.Pizzaid;
-                break;
-            }
-            return View(PreviewList);
-        }
         [HttpGet]
         public ActionResult CreatePizza(int id)
         {
@@ -696,7 +599,8 @@ namespace Web.Controllers
                     numberofpizzas++;
                 }
             }
-            if (numberofpizzas >= 100)
+            //if (numberofpizzas >= 100)
+            if (numberofpizzas >= 2)
             {
                 ViewBag.LIMIT = 1;
             }
@@ -726,6 +630,229 @@ namespace Web.Controllers
                 db.AddPizza(dmp);
                 db.Save();
                 return RedirectToAction(nameof(CreatePizza), new { id = dmp.Porderid });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        [HttpGet]
+        public ActionResult CreatePizzaPrev(int upreid)
+        {
+            //ViewBag.ID = id;
+            var alloftheordersplus1 = db.GetOrders();
+            int nextorderofbus1 = 0;
+            foreach (var alloftheorderplus1 in alloftheordersplus1)
+            {
+                nextorderofbus1 += 1;
+            }
+            nextorderofbus1 += 1;
+            ViewBag.ID = nextorderofbus1;
+            //ViewBag.ID = opreid;
+            //ViewBag.IDUserid = db.GetOrderByOrderid(opreid).Ocustomerid;
+            ViewBag.IDUserid = upreid;
+            TempData["prevuid1"] = upreid;
+            //TempData["OrderID11"] = opreid;
+            int numberofpizzas = 0;
+            var pizzasinorder = db.GetPizzas();
+            foreach (var pizzainorder in pizzasinorder)
+            {
+                if (pizzainorder.Porderid == nextorderofbus1)
+                {
+                    numberofpizzas++;
+                }
+            }
+            if (numberofpizzas >= 100)
+            {
+                ViewBag.LIMIT = 1;
+            }
+            else
+            {
+                ViewBag.LIMIT = 0;
+            }
+            ViewBag.NumOfP = numberofpizzas;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePizzaPrev(IFormCollection collection, Models.Pizza pizza)
+        {
+            PizzaBox.Domain.Pizza dmp = new Pizza();
+            dmp.Pizzaid = pizza.Pizzaid;
+            dmp.Size = pizza.Size;
+            int SizeCost = PizzaBox.Domain.BusinessLogic.SizeCost(pizza.Size);
+            dmp.Crust = pizza.Crust;
+            int CrustCost = PizzaBox.Domain.BusinessLogic.CrustCost(pizza.Crust);
+            //dmp.Cost = pizza.Cost;
+            dmp.Cost = PizzaBox.Domain.BusinessLogic.totalordercost(SizeCost, CrustCost);
+            var alloftheordersplus = db.GetOrders();
+            int nextorderofbus = 0;
+            foreach (var alloftheorderplus in alloftheordersplus)
+            {
+                nextorderofbus += 1;
+            }
+            nextorderofbus += 1;
+            dmp.Porderid = nextorderofbus;
+            //dmp.Porderid = (int)TempData["OrderID11"];
+            var allofthepizzas = db.GetPizzas();
+            int totalnumofpall = 0;
+            foreach (var allofthepizza in allofthepizzas)
+            {
+                totalnumofpall += 1;
+            }
+            totalnumofpall += 1;
+            try
+            {
+                //db.AddPizza(dmp);
+                //db.Save();
+                TempData["ID"] = totalnumofpall;
+                TempData["Size"] = dmp.Size;
+                TempData["Crust"] = dmp.Crust;
+                TempData["Cost"] = dmp.Cost;
+                //TempData["Porderid"] = dmp.Porderid;
+                TempData["Porderid"] = nextorderofbus;
+                return RedirectToAction(nameof(PizzasPagePrev), new { prevuid = (int)TempData["prevuid1"] });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        public ActionResult PizzasPagePrev(int prevuid)
+        {
+            //var pizzas = db.GetPizzas();
+            int PID1 = (int)TempData["ID"];
+            string SIZE1 = (string)TempData["Size"];
+            string CRUST1 = (string)TempData["Crust"];
+            int COST1 = (int)TempData["Cost"];
+            int POID1 = (int)TempData["Porderid"];
+            p = new Models.Pizza();
+            p.Pizzaid = PID1;
+            p.Size = SIZE1;
+            p.Crust = CRUST1;
+            p.Cost = COST1;
+            p.Porderid = POID1;
+            TempData["ID2"] = PID1;
+            TempData["Size2"] = SIZE1;
+            TempData["Crust2"] = CRUST1;
+            TempData["Cost2"] = COST1;
+            TempData["Porderid2"] = POID1;
+            //p.Nump++;
+            PizzaList.Add(p);
+            ViewBag.prevuid2 = prevuid;
+            return View(PizzaList);
+        }
+        [HttpGet]
+        public ActionResult CreateOrderPrev(int uid)
+        {
+            DateTime currenttime = DateTime.Now;
+            var currentuser = db.GetUserByUserid(uid);
+            var allusers = db.GetUsers();
+            var allorders = db.GetOrders();
+            int orderlength = 0;
+            int allorderslength = 0;
+            int innerolength = 0;
+            int usermaxl = 0;
+            int usercounter = 0;
+            foreach (var allorder in allorders)
+            {
+                if (allorder.Ocustomerid == uid)
+                {
+                    orderlength += 1;
+                }
+            }
+            int ocounterl = orderlength;
+            foreach (var allorder in allorders)
+            {
+                allorderslength += 1;
+                if (allorder.Ocustomerid == uid)
+                {
+                    innerolength += 1;
+                    if (innerolength == ocounterl)
+                    {
+                        usercounter = allorderslength;
+                        break;
+                    }
+                }
+            }
+
+            ViewBag.usercounter = usercounter;
+            ViewBag.allorderslength = allorderslength;
+            ViewBag.orderlength = orderlength;
+            var maxorder = db.GetOrderByOrderid(usercounter);
+            //var orderdt = maxorder.Datetime;
+            //ViewBag.orderdt = orderdt;
+            //DateTime dt;
+            
+            //dt = orderdt.Value;
+            //DateTime dt2 = dt.AddHours(2);
+            
+            //ViewBag.orderallow = DateTime.Compare(currenttime, dt2);
+            
+            ViewBag.UID = uid;
+            ViewBag.orderallow = 1;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateOrderPrev(IFormCollection collection, Models.Order order)
+        {
+            PizzaBox.Domain.Order dmo = new Order();
+            dmo.Orderid = order.Orderid;
+            dmo.Ocustomerid = order.Ocustomerid;
+            //dmo.Datetime = order.Datetime;
+            dmo.Datetime = DateTime.Now;
+            try
+            {
+                db.AddOrder(dmo);
+                db.Save();
+                return RedirectToAction(nameof(CreatePizzaPreview));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        [HttpGet]
+        public ActionResult CreatePizzaPreview()
+        {
+            int PID2 = (int)TempData["ID2"];
+            string SIZE2 = (string)TempData["Size2"];
+            string CRUST2 = (string)TempData["Crust2"];
+            int COST2 = (int)TempData["Cost2"];
+            int POID2 = (int)TempData["Porderid2"];
+
+            ViewBag.PID2 = PID2;
+            ViewBag.SIZE2 = SIZE2;
+            ViewBag.CRUST2 = CRUST2;
+            ViewBag.COST2 = COST2;
+            ViewBag.POID2 = POID2;
+
+            TempData["ID3"] = PID2;
+            TempData["Size3"] = SIZE2;
+            TempData["Crust3"] = CRUST2;
+            TempData["Cost3"] = COST2;
+            TempData["Porderid3"] = POID2;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePizzaPreview(IFormCollection collection, Models.Pizza pizza)
+        {
+            PizzaBox.Domain.Pizza dmp3 = new Pizza();
+            dmp3.Pizzaid = (int)TempData["ID3"];
+            dmp3.Size = (string)TempData["Size3"];
+            dmp3.Crust = (string)TempData["Crust3"];
+            dmp3.Cost = (int)TempData["Cost3"];
+            dmp3.Porderid = (int)TempData["Porderid3"];
+            try
+            {
+                db.AddPizza(dmp3);
+                db.Save();
+                return RedirectToAction(nameof(PizzasPage), new { opid = dmp3.Porderid });
             }
             catch
             {

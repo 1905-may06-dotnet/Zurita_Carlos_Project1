@@ -11,7 +11,6 @@
 }
 
 <h1>@UOIDName Orders</h1>
-
 <p>
     <a asp-action="CreateOrder" asp-route-uid=@UOID>Order Pizzas</a>
 </p>
@@ -68,7 +67,8 @@
                         <a asp-action="PizzasPage" asp-route-opid=@item.Orderid>Pizzas</a> |
                         <a asp-action="CreatePizza" asp-route-id=@item.Orderid>Make A Pizza</a> |
                         <a asp-action="CreatedefonePizza" asp-route-id=@item.Orderid>Make Def 1 Pizza</a> |
-                        <a asp-action="CreatedeftwoPizza" asp-route-id=@item.Orderid>Make Def 2 Pizza</a>
+                        <a asp-action="CreatedeftwoPizza" asp-route-id=@item.Orderid>Make Def 2 Pizza</a> |
+                        <a asp-action="CreatePizzaPrev" asp-route-upreid=@UOID>Make A Pizza With Preview</a>
                         @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@

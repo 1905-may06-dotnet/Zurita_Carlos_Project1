@@ -1,0 +1,69 @@
+﻿@model Web.Models.Pizza
+
+@{
+    ViewData["Title"] = "CreatePizza";
+    ViewBag.Title = "Index";
+    var ID = ViewBag.ID;
+    var IDUserid = ViewBag.IDUserid;
+    var LIMIT = ViewBag.LIMIT;
+    var NumOfP = ViewBag.NumOfP;
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@if (LIMIT == 0)
+{
+    <h1>Create Your Pizza</h1>
+    @*<h2>@ID</h2>*@
+    <h4>Select the following</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreatePizza">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Size" class="control-label"></label>
+                    <input asp-for="Size" class="form-control" autofocus />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Crust" class="control-label"></label>
+                    <input asp-for="Crust" class="form-control" />
+                    <span asp-validation-for="Crust" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                        <label asp-for="Cost" class="control-label"></label>
+                        <input asp-for="Cost" class="form-control" />
+                        <span asp-validation-for="Cost" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="Porderid" class="control-label"></label>
+                    <input asp-for="Porderid" class="form-control" value=@ID />
+                    <span asp-validation-for="Porderid" class="text-danger"></span>
+                </div>
+                @*<div>
+                        <a asp-action="CreateTopping">Add Toppings</a>
+                    </div>*@
+                <div>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <h1>You've reached the limit of pizzas you can order</h1>
+}
+<div>
+    @*<a asp-action="Index">Back to List</a><br>*@
+    <a asp-action="PizzasPage" asp-route-opid=@ID>Back to Pizza List</a><br>
+    <a asp-action="OrdersPage" asp-route-uoid=@IDUserid>Back to Order List</a><br>
+    <a asp-action="UserSignedIn" asp-route-lsid=@IDUserid>Back to User Information</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

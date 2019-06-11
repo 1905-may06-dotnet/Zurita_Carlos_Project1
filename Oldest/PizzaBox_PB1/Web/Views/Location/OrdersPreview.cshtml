@@ -1,0 +1,64 @@
+﻿@*@using MultipleModelInOneView;*@
+@model dynamic
+
+@{
+    ViewData["Title"] = "OrdersPreview";
+    int Numo = 1;
+}
+
+<h1>Order Preview</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Orderid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ocustomerid)
+            </th>*@
+            <th>
+                Date And Time
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Order order in Model.Orders)
+        {
+        <tr>
+            <td>@Numo</td>
+            <td>@order.Datetime</td>
+            @{Numo++;}
+        </tr>
+        }
+        @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Numo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Orderid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ocustomerid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datetime)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }*@
+    </tbody>
+</table>

@@ -24,10 +24,10 @@
             <tr>
                 @*<th>
                         @Html.DisplayNameFor(model => model.Numu)
-                    </th>
+                    </th>*@
                     <th>
                         @Html.DisplayNameFor(model => model.Userid)
-                    </th>*@
+                    </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Username)
                 </th>
@@ -54,10 +54,10 @@
                     <tr>
                         @*<td>
                                 @Html.DisplayFor(modelItem => item.Numu)
-                            </td>
+                            </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Userid)
-                            </td>*@
+                            </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Username)
                         </td>
@@ -76,10 +76,11 @@
                         <td>
                             <a asp-action="LocationsPage" asp-route-lpid=@item.Userid>Locations</a> |
                             <a asp-action="OrdersPage" asp-route-uoid=@item.Userid>Orders</a> |
-                            <a asp-action="CreateOrder" asp-route-uid=@item.Userid>Order Pizzas</a>
+                            <a asp-action="CreateOrder" asp-route-uid=@LSID>Order Pizzas</a>
+                            @*<a asp-action="CreateOrder" asp-route-uid=@item.Userid>Order Pizzas</a>*@
                             @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
                         </td>
                     </tr>
                 }

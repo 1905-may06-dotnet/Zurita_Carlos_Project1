@@ -45,13 +45,14 @@ C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Locati
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreateSignIn.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\LocationsPage.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\OrdersPreview.g.cshtml.cs
-C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\PizzasPreview.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreateAnySignIn.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout1.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout2.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreateAny.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\AdminsPage.g.cshtml.cs
-C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreateFullPizza.g.cshtml.cs
-C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\RedirectPage.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreatedefonePizza.g.cshtml.cs
 C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreatedeftwoPizza.g.cshtml.cs
+C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreatePizzaPrev.g.cshtml.cs
+C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\PizzasPagePrev.g.cshtml.cs
+C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreatePizzaPreview.g.cshtml.cs
+C:\Revature\Homework\PizzaBox_PB1\Web\obj\Debug\netcoreapp2.2\Razor\Views\Location\CreateOrderPrev.g.cshtml.cs
