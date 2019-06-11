@@ -1,0 +1,35 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  projectPath: 'PizzaBox_PB1/Web/'
+  pathSolution: 'PizzaBox_PB1'
+  pathToTest: 'PizzaBox_PB1/MSTest'
+
+steps:
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: $(pathSolution)
+- script: dotnet test --configuration $(buildConfiguration) --no-build
+  workingDirectory: $(pathSolution)
+  displayName: 'dotnet MSTest'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    projects: '$(projectPath)/*.csproj'
+- task: AzureRmWebAppDeployment@4
+  inputs: 
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(fa80f3f3-5619-457b-933b-a6bf7fc64b38)'
+    appType: 'webApp'
+    WebAppName: 'ZuritaPizzas'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
